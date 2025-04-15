@@ -27,14 +27,36 @@ class Item: SKU {
 }
 
 class Receipt {
+    var items: [SKU] = [];
+    var currTotal: Int = 0;
+    
     // item
-    func item() {
-        
+    func item() -> [SKU] {
+        return items;
     }
     
     // output
-    func output() {
+    func output() -> String {
+        var output: String;
+        output = "Receipt: \n";
         
+        // loop through all the items as they print the same
+        for item in items {
+            output += "\(item.name): $\(Double(item.price()) / 100.0)\n"
+        }
+        output += " ------------------ \n TOTAL $\(Double(self.total()) / 100.0)"
+        return output;
+    }
+    
+    // total, register calls on total
+    func total() -> Int {
+        return currTotal;
+    }
+    
+    // add, register calls on add
+    func add(_ item: SKU) {
+        self.items.append(item);
+        self.currTotal += item.price();
     }
 }
 
