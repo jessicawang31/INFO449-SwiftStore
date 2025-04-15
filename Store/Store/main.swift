@@ -7,13 +7,40 @@
 
 import Foundation
 
-protocol SKU {}
+protocol SKU {
+    var name: String {get};
+    func price -> Int;
+}
 
-class Item {}
+class Item: SKU {
+    var name: String;
+    var priceEach: Int;
+    
+    init (name: String, priceEach: Int) {
+        self.name = name;
+        self.priceEach = priceEach;
+    }
+    
+    func price() -> Int {
+        return priceEach;
+    }
+}
 
-class Receipt {}
+class Receipt {
+    
+}
 
-class Register {}
+class Register {
+    // subtotal
+    func subtotal() {
+        
+    }
+    
+    // total
+    func total() {
+        
+    }
+}
 
 class Store {
     let version = "0.1"
