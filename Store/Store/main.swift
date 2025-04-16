@@ -9,7 +9,7 @@ import Foundation
 
 protocol SKU {
     var name: String {get};
-    func price -> Int;
+    func price() -> Int;
 }
 
 class Item: SKU {
@@ -27,22 +27,22 @@ class Item: SKU {
 }
 
 class Receipt {
-    var items: [SKU] = [];
+    var receiptItems: [SKU] = [];
     var currTotal: Int = 0;
     
     // item
-    func item() -> [SKU] {
-        return items;
+    func items() -> [SKU] {
+        return receiptItems;
     }
     
     // output
     func output() -> String {
         var output: String;
-        output = "Receipt: \n";
+        output = "Receipt:\n";
         
         // loop through all the items as they print the same
-        for item in items {
-            output += "\(item.name): $\(Double(item.price()) / 100.0)\n"
+        for item in self.receiptItems {
+            output += ("\n\(item.name): $\(Double(item.price()) / 100.0)")
         }
         output += " ------------------ \n TOTAL $\(Double(self.total()) / 100.0)"
         return output;
@@ -55,7 +55,7 @@ class Receipt {
     
     // add, register calls on add
     func add(_ item: SKU) {
-        self.items.append(item);
+        self.receiptItems.append(item);
         self.currTotal += item.price();
     }
 }
