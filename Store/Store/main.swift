@@ -37,15 +37,13 @@ class Receipt {
     
     // output
     func output() -> String {
-        var output: String;
-        output = "Receipt:\n";
-        
-        // loop through all the items as they print the same
-        for item in self.receiptItems {
-            output += ("\n\(item.name): $\(Double(item.price()) / 100.0)")
+        var printed = "Receipt:\n";
+        for i in self.receiptItems {
+            printed += "\(i.name): $\(Double(i.price()) / 100)\n";
         }
-        output += " ------------------ \n TOTAL $\(Double(self.total()) / 100.0)"
-        return output;
+        printed += "------------------\n";
+        printed += "TOTAL: $\(Double(self.total()) / 100)";
+        return printed;
     }
     
     // total, register calls on total
