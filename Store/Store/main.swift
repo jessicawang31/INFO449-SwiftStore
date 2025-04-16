@@ -75,7 +75,7 @@ class Register {
     
     // total
     func total() -> Receipt {
-        var tempReceipt = self.receipt;
+        let tempReceipt = self.receipt;
         receipt = Receipt(); // set it back
         return tempReceipt;
         
